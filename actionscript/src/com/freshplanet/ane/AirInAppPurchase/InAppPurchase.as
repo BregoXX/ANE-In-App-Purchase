@@ -68,12 +68,12 @@ package com.freshplanet.ane.AirInAppPurchase
 			}
 		}
 		
-		public function makePurchase(productId:String ):void
+		public function makePurchase(productId:String, payload:String ):void
 		{
 			if (this.isInAppPurchaseSupported)
 			{
-				trace("[InAppPurchase] purchasing", productId);
-				extCtx.call("makePurchase", productId);
+				trace("[InAppPurchase] purchasing", productId + " payload=" + payload);
+				extCtx.call("makePurchase", productId, payload);
 			} else
 			{
 				this.dispatchEvent(new InAppPurchaseEvent(InAppPurchaseEvent.PURCHASE_ERROR, "InAppPurchase not supported"));
